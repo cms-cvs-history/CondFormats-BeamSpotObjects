@@ -7,20 +7,24 @@
  *
  * \author Francisco Yumiceva, Fermilab (yumiceva@fnal.gov)
  *
- * \version $Id: BeamSpotObjects.h,v 1.2 2007/03/30 03:44:05 yumiceva Exp $
+ * \version $Id: BeamSpotObjects.h,v 1.4 2008/02/01 17:16:26 yumiceva Exp $
  *
  */
 
 #include <math.h>
 #include <sstream>
-
+#include <cstring>
 
 class BeamSpotObjects {
 	
   public:
 
 	/// default constructor
-	BeamSpotObjects(){}
+	BeamSpotObjects(): sigmaZ_(0), beamwidth_(0), dxdz_(0), dydz_(0) {
+		
+		std::memset(position_, 0, sizeof position_);
+		std::memset(covariance_, 0, sizeof covariance_);
+	}
 	
 	virtual ~BeamSpotObjects(){}
 
